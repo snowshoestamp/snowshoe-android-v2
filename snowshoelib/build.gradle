@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'snowshoelib'
+
+  publishedGroupId = 'com.mattluedke'
+  libraryName = 'snowshoelib'
+  artifact = 'snowshoelib'
+
+  libraryDescription = 'v2 of Android wrapper for SnowShoe'
+
+  siteUrl = 'https://github.com/mluedke2/snowshoe-android-v2'
+  gitUrl = 'https://github.com/mluedke2/snowshoe-android-v2.git'
+
+  libraryVersion = '1.0.4'
+
+  developerId = 'mattluedke'
+  developerName = 'Matt Luedke'
+  developerEmail = 'mluedke2@gmail.com'
+
+  licenseName = 'MIT'
+  licenseUrl = 'https://github.com/mluedke2/snowshoe-android-v2/blob/master/LICENSE'
+  allLicenses = ["MIT"]
+}
+
 android {
   compileSdkVersion 23
   buildToolsVersion "23.0.0"
@@ -23,4 +47,96 @@ dependencies {
   compile 'com.android.support:appcompat-v7:23.0.1'
   compile 'com.google.code.gson:gson:2.3.1'
   compile 'org.scribe:scribe:1.3.6'
+}
+
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = publishedGroupId                               // Maven Group ID for the artifact
+
+install {
+  repositories.mavenInstaller {
+    // This generates POM.xml with proper parameters
+    pom {
+      project {
+        packaging 'aar'
+        groupId 'com.mattluedke'
+        artifactId 'snowshoelib'
+
+        // Add your description here
+        name 'snowshoelib'
+        description 'v2 of Android wrapper for SnowShoe'
+        url 'https://github.com/mluedke2/snowshoe-android-v2'
+
+        // Set your license
+        licenses {
+          license {
+            name 'MIT'
+            url 'https://github.com/mluedke2/snowshoe-android-v2/blob/master/LICENSE'
+          }
+        }
+        developers {
+          developer {
+            id 'mattluedke'
+            name 'Matt Luedke'
+            email 'mluedke2@gmail.com'
+          }
+        }
+        scm {
+          connection 'https://github.com/mluedke2/snowshoe-android-v2.git'
+          developerConnection 'https://github.com/mluedke2/snowshoe-android-v2.git'
+          url 'https://github.com/mluedke2/snowshoe-android-v2'
+        }
+      }
+    }
+  }
+}
+
+apply plugin: 'com.jfrog.bintray'
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+  from android.sourceSets.main.java.srcDirs
+  classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+  source = android.sourceSets.main.java.srcDirs
+  classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+artifacts {
+  archives javadocJar
+  archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+  user = properties.getProperty("bintray.user")
+  key = properties.getProperty("bintray.apikey")
+
+  configurations = ['archives']
+  pkg {
+    repo = bintrayRepo
+    name = bintrayName
+    desc = libraryDescription
+    websiteUrl = siteUrl
+    vcsUrl = gitUrl
+    licenses = allLicenses
+    publish = true
+    publicDownloadNumbers = true
+    version {
+      desc = libraryDescription
+      gpg {
+        sign = false
+      }
+    }
+  }
 }

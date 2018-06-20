@@ -64,7 +64,7 @@ install {
         // Add your description here
         name 'snowshoelib'
         description 'v2 of Android wrapper for SnowShoe'
-        url 'https://github.com/mluedke2/snowshoe-android-v2'
+        url 'https://github.com/snowshoestamp/snowshoe-android-v2'
 
         // Set your license
         licenses {
@@ -75,9 +75,9 @@ install {
         }
         developers {
           developer {
-            id 'mattluedke'
-            name 'Matt Luedke'
-            email 'mluedke2@gmail.com'
+            id 'snowshoestamp'
+            name 'Snowshoe Stamp'
+            email 'support@snowshoestamp.com'
           }
         }
         scm {

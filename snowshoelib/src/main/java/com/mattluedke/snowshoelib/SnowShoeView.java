@@ -63,8 +63,10 @@ public class SnowShoeView extends View {
 
   public boolean onTouchEvent(MotionEvent event) {
 
-    if (event.getAction() == MotionEvent.ACTION_MOVE) {
-      if (event.getPointerCount() == NUMBER_OF_STAMP_PTS) {
+    int action = event.getActionMasked();
+    int pointerCount = event.getPointerCount();
+    if (action == MotionEvent.ACTION_POINTER_DOWN) {
+      if (pointerCount == NUMBER_OF_STAMP_PTS) {
         if (!mStampBeingChecked) {
           mStampBeingChecked = true;
 

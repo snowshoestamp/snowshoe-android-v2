@@ -10,10 +10,16 @@ The [SnowShoe Stamp](http://www.snowshoestamp.com) is an authentication tool for
 ## Installation
 
 SnowShoe-Android-v2 is available through [jCenter](https://bintray.com/bintray/jcenter). To install
-it, add the following line to your `build.gradle` dependencies:
+it, add the following line to your projects `build.gradle`repositories:
 
 ```groovy
-compile 'com.mattluedke:snowshoelib:1.0.4'
+maven {
+        url  "https://dl.bintray.com/snowshoestamp/maven" 
+    }
+```
+and add the following line to your modules `build.gradle`dependencies:
+```groovy
+implementation 'com.mattluedke:snowshoelib:2.0.0'
 ```
 
 ## Usage

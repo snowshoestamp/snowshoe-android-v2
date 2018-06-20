@@ -10,14 +10,14 @@ ext {
 
   libraryDescription = 'v2 of Android wrapper for SnowShoe'
 
-  siteUrl = 'https://github.com/mluedke2/snowshoe-android-v2'
-  gitUrl = 'https://github.com/mluedke2/snowshoe-android-v2.git'
+  siteUrl = 'https://github.com/snowshoestamp/snowshoe-android-v2'
+  gitUrl = 'https://github.com/snowshoestamp/snowshoe-android-v2.git'
 
   libraryVersion = '2.0.0'
 
-  developerId = 'mattluedke'
-  developerName = 'Matt Luedke'
-  developerEmail = 'mluedke2@gmail.com'
+  developerId = 'snowshoestamp'
+  developerName = 'snowshoe stamp'
+  developerEmail = 'engineering@snowshoestamp.com'
 
   licenseName = 'MIT'
   licenseUrl = 'https://github.com/mluedke2/snowshoe-android-v2/blob/master/LICENSE'
@@ -81,9 +81,9 @@ install {
           }
         }
         scm {
-          connection 'https://github.com/mluedke2/snowshoe-android-v2.git'
-          developerConnection 'https://github.com/mluedke2/snowshoe-android-v2.git'
-          url 'https://github.com/mluedke2/snowshoe-android-v2'
+          connection 'https://github.com/snowshoestamp/snowshoe-android-v2.git'
+          developerConnection 'https://github.com/snowshoestamp/snowshoe-android-v2.git'
+          url 'https://github.com/snowshoestamp/snowshoe-android-v2'
         }
       }
     }

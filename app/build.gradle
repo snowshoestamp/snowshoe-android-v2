@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
+  compileSdkVersion 26
 
   defaultConfig {
     applicationId "com.mattluedke.snowshoe"
     minSdkVersion 16
-    targetSdkVersion 25
+    targetSdkVersion 26
     versionCode 1
     versionName "1.0"
   }
@@ -20,6 +20,6 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation 'com.android.support:appcompat-v7:25.0.1'
+  implementation 'com.android.support:appcompat-v7:26.0.0'
   implementation project(':snowshoelib')
 }

@@ -1,7 +1,6 @@
 package com.mattluedke.snowshoelib;
 
-import org.scribe.builder.api.DefaultApi10a;
-import org.scribe.model.Token;
+import com.github.scribejava.core.builder.api.DefaultApi10a;
 
 public class SnowShoeApi extends DefaultApi10a {
   @Override
@@ -15,7 +14,7 @@ public class SnowShoeApi extends DefaultApi10a {
   }
 
   @Override
-  public String getAuthorizationUrl(Token requestToken) {
+  public String getAuthorizationBaseUrl() {
     return "";
   }
 }

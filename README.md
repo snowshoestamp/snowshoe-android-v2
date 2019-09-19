@@ -19,7 +19,7 @@ maven {
 ```
 and add the following line to your modules `build.gradle`dependencies:
 ```groovy
-implementation 'com.mattluedke:snowshoelib:2.0.0'
+implementation 'com.mattluedke:snowshoelib:2.0.2'
 ```
 
 ## Usage

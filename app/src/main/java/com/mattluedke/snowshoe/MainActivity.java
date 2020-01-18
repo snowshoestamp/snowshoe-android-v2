@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 import com.mattluedke.snowshoelib.OnStampListener;
 import com.mattluedke.snowshoelib.StampResult;
 import com.mattluedke.snowshoelib.SnowShoeView;
@@ -16,8 +18,8 @@ public class MainActivity extends AppCompatActivity implements OnStampListener {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    SnowShoeView snowShoeView = (SnowShoeView) findViewById(R.id.snowshoeview);
-    snowShoeView.setAppKeyAndSecret("YOUR_APP_KEY", "YOUR_APP_SECRET");
+    SnowShoeView snowShoeView = findViewById(R.id.snowshoeview);
+    snowShoeView.setApiKey("YOUR_API_KEY");
     snowShoeView.setOnStampListener(this);
   }
 
@@ -43,7 +45,25 @@ public class MainActivity extends AppCompatActivity implements OnStampListener {
     return super.onOptionsItemSelected(item);
   }
 
-  @Override public void onStampRequestMade() {}
+  @Override public void onStampRequestMade() {
+      TextView textView = findViewById(R.id.text_view);
+      textView.setText("SENDING");
+  }
 
-  @Override public void onStampResult(StampResult result) {}
+  @Override public void onStampResult(StampResult result) {
+
+      if (result != null) {
+          TextView textView = findViewById(R.id.text_view);
+          if (result.getStamp() != null) {
+              textView.setText(result.getStamp().getSerial() + "  " + result.getReceipt());
+          }
+          else {
+              textView.setText("NO STAMP" + "  " + result.getReceipt());
+              if (result.getError() == null) {
+                  textView.setText("No Error or Stamp.");
+              }
+          }
+      }
+
+  }
 }
